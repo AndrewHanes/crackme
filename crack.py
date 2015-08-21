@@ -36,30 +36,8 @@ def main():
     You can use check_password to test your password.
     :return:
     """
-    password = ""
-    for i in range(20):
-        averages = {}
-        for char in VALID_CHARS:
-            time = 0
-            iters = 1
-            tmp_password = password + char
-            for i in range(iters):
-                resp = check_password('hanes', tmp_password)
-                if resp['status'] == 'success':
-                    print("Done, password is " + tmp_password)
-                    return 0
-                else:
-                    time += resp['time']
-            averages[char] = float(time)/iters
-        max_time = -1
-        for char in averages:
-            time = averages[char]
-            if time > max_time:
-                max_time = time
-                max_char = char
-        password += max_char
-        print("Working password " + password)
-    print("Nothing found")
+    #  TODO Put your cracking code here
+    print("No solutions")
 
 if __name__ == '__main__':
     main()
