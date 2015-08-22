@@ -21,7 +21,8 @@ def check_username_password(request, *args, **kwargs):
     username = data.get('username', None)
     password = data.get('password', None)
     expected_password = 'packet'
-    if username is None or password is None:
+    print (username, password)
+    if username == None or password == None:
         response = {'status': 'failure'}
     else:
         while len(password) > 0 and len(expected_password) > 0:
@@ -41,4 +42,5 @@ def check_username_password(request, *args, **kwargs):
         else:
             response = {'status': 'failure', 'time': mstime() - start_time}
             return HttpResponse(json.dumps(response), content_type="application/json")
+    return HttpResponse(json.dumps(response), content_type="application/json")
 
