@@ -10,7 +10,7 @@ Program to crack the password.
 You need to finish it
 """
 
-HOST = 'http://localhost:8000'
+HOST = 'http://poop-dollah.com/login'
 VALID_CHARS = string.ascii_lowercase
 
 
