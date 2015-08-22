@@ -4,7 +4,7 @@ from django.http import HttpResponse
 
 # Create your views here.
 from django.views.decorators.csrf import csrf_exempt
-from flask import json
+import json
 import time
 
 all_good = open('solved.txt', 'a+', 1)
