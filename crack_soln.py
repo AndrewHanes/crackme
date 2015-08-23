@@ -10,7 +10,7 @@ Program to crack the password.
 You need to finish it
 """
 
-HOST = 'http://poop-dollah.com/login'
+HOST = 'http://login.poop-dollah.com/login'
 VALID_CHARS = string.ascii_lowercase
 
 
@@ -44,7 +44,7 @@ def main():
             iters = 1
             tmp_password = password + char
             for i in range(iters):
-                resp = check_password('hanes', tmp_password)
+                resp = check_password(USERNAME, tmp_password)
                 if resp['status'] == 'success':
                     print("Done, password is " + tmp_password)
                     return 0

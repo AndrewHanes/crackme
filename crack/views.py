@@ -20,10 +20,12 @@ def check_username_password(request, *args, **kwargs):
         data =request.POST
     username = data.get('username', None)
     password = data.get('password', None)
-    expected_password = 'packet'
-    print (username, password)
-    if username == None or password == None:
-        response = {'status': 'failure'}
+    expected_password_lst = [(ord(a) ^ ord(b)) % 26 + ord('a') for a, b in zip('packet', username)]
+    expected_password = "".join([chr(x) for x in expected_password_lst])[:10]
+    if username is None or password is None:
+        response = {'status': 'failure', 'message': 'No username or password given'}
+    elif len(username) < 5:
+        response = {'status': 'failure', 'message': 'Username must be longer than 5 characters'}
     else:
         while len(password) > 0 and len(expected_password) > 0:
             front_correct = expected_password[0]
