@@ -1,5 +1,4 @@
 import json
-import urllib
 import string
 
 __author__ = 'ahanes'
@@ -23,9 +22,10 @@ def check_password(username, password):
 
     HINT:  The time field is important
     """
-    params = urllib.urlencode(dict(username=username, password=password))
-    resp = urllib.urlopen(HOST + '/login', params)
-    return json.loads(resp.read())
+    import urllib.parse as parse
+    import urllib.request as request
+    resp = request.urlopen(HOST+"?username=" + username + "&password=" + password)
+    return json.loads(resp.readall().decode('ascii'))
 
 def main():
     """
@@ -34,12 +34,13 @@ def main():
     Valid passwords contain only a-z (lower case alphabetic characters)
     VALID_CHARS can be treated as the set of valid password characters
     You can use check_password to test your password.
-
-    Username should be unique to you and you need to remember it
     :return:
     """
-    #  TODO Put your code here
     print("Nothing found")
 
 if __name__ == '__main__':
-    main()
+    import sys
+    if sys.version_info[0] > 2 and sys.version_info[1] > 2:
+        main()
+    else:
+        print("Invalid version of python")

