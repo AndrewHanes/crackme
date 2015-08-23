@@ -44,7 +44,7 @@ def main():
             iters = 1
             tmp_password = password + char
             for i in range(iters):
-                resp = check_password(USERNAME, tmp_password)
+                resp = check_password('ahanes', tmp_password)
                 if resp['status'] == 'success':
                     print("Done, password is " + tmp_password)
                     return 0
