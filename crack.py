@@ -10,7 +10,7 @@ Program to crack the password.
 You need to finish it
 """
 
-HOST = 'http://poop-dollah.com/login'
+HOST = 'http://login.poop-dollah.com/login'
 VALID_CHARS = string.ascii_lowercase
 
 
@@ -34,10 +34,12 @@ def main():
     Valid passwords contain only a-z (lower case alphabetic characters)
     VALID_CHARS can be treated as the set of valid password characters
     You can use check_password to test your password.
+
+    Username should be unique to you and you need to remember it
     :return:
     """
-    #  TODO Put your cracking code here
-    print("No solutions")
+    #  TODO Put your code here
+    print("Nothing found")
 
 if __name__ == '__main__':
     main()
