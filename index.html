@@ -3,8 +3,8 @@
 <h1>CSH Password Cracking Quest 2015</h1>
 <div class=intro>
 <h2>Introduction</h2>
-<p> This is the password cracking quest instriction page. The goal of this quest is to familarize applicants with REST and python</p>
-<p>A vulnerable web application that handles authentication can be found at <a href="http://login.poop-dollah.com/login">http://login.poop-dollah.com/login</a><br/>
+<p> This is the password cracking quest introduction page. The goal of this quest is to familarize applicants with REST and python</p>
+<p>A vulnerable web application that handles authentication can be found at http://login.poop-dollah.com/login<br/>
 This page takes two parameters, username and password, via POST or GET.  Here is an example: <a href="http://login.poop-dollah.com/login?username=user&password=pass"> http://login.poop-dollah.com/login?username=user&password=pass</a>
 <br /> <br />
 
@@ -22,7 +22,7 @@ A starter client may be found <a href="crack.py.txt">here</a>.  You are free to 
 <h2> Sample Responses </h2>
 <p>Here is a sample response</p>
 <br/>
-<p>URL http://localhost:8000/login?username=123123&password=123</p>
+<p>Invalid user and pass: http://login.poop-dollah.com/login?username=123123&password=123</p>
 <p>
 {
 status: "failure",
@@ -30,6 +30,13 @@ time: 1
 }
 <br />
 Notice the time value in the response.  This might be useful!
+</p>
+
+<br/><br/><p>Valid user and pass: http://login.poop-dollah.com/login?username=ahanes&password=rjcfah</p>
+<p>
+{
+status: "success"
+}
 </p>
 
 <br />
