@@ -31,7 +31,7 @@ def check_username_password(request, *args, **kwargs):
         if settings.AUTHORIZED_ONLY:
             valid_users = open('allowed_users', 'r').read().split('\n')
             if username not in valid_users:
-                return HttpResponseForbidden()
+                return HttpResponseForbidden("Username not allowed.  You should meet me first...")
         while len(password) > 0 and len(expected_password) > 0:
             front_correct = expected_password[0]
             expected_password = expected_password[1:]
