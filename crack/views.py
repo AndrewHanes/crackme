@@ -1,11 +1,12 @@
 import hashlib
 import random
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseForbidden
 
 # Create your views here.
 from django.views.decorators.csrf import csrf_exempt
 import json
 import time
+from crackme import settings
 
 all_good = open('solved.txt', 'a+', 1)
 
@@ -27,6 +28,10 @@ def check_username_password(request, *args, **kwargs):
     elif len(username) < 5:
         response = {'status': 'failure', 'message': 'Username must be longer than 5 characters'}
     else:
+        if settings.AUTHORIZED_ONLY:
+            valid_users = open('allowed_users', 'r').read().split('\n')
+            if username not in valid_users:
+                return HttpResponseForbidden()
         while len(password) > 0 and len(expected_password) > 0:
             front_correct = expected_password[0]
             expected_password = expected_password[1:]
