@@ -51,3 +51,6 @@ def check_username_password(request, *args, **kwargs):
             return HttpResponse(json.dumps(response), content_type="application/json")
     return HttpResponse(json.dumps(response), content_type="application/json")
 
+def test(request):
+        return HttpResponse(json.dumps(dict(intents=[dict(intent="quit", slots=[])])))
+

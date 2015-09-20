@@ -15,9 +15,10 @@ Including another URLconf
 """
 from django.conf.urls import include, url
 from django.contrib import admin
-from crack.views import check_username_password
+from crack.views import check_username_password, test
 
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
     url(r'login', check_username_password),
+    url(r'alexa', test),
 ]
